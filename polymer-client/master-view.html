@@ -12,8 +12,16 @@
 </head>
 <dom-module id="master-view">
     <template>
+        <style is="custom-style">
+            paper-material {
+                background: white;
+                margin: 6px;
+                padding: 6px;
+                border-radius: 2px;
+            }
+        </style>
         <div class="layout center-justified">
-            <paper-listbox selected="{{mySelection}}" attr-for-selected="value">
+            <paper-listbox selected="{{selectedStockIdent}}" attr-for-selected="value">
                 <template is='dom-repeat' items='{{model.stockItems}}'>
                     <paper-item value="{{item.stockIdent}}">
                         <paper-item-body>{{item.stockName}}</paper-item-body>
@@ -32,14 +40,13 @@
         is: "master-view",
         behaviors: [clientContext.createBehavior('MasterController')],
         properties: {
-            clientContext: Object,
-            mySelection: {
+            selectedStockIdent: {
                 type: String,
-                observer: '_mySelectionChanged'
-            },
+                observer: '_selectedStockIdentChanged',
+                notify: true
+            }
         },
-        _mySelectionChanged: function (newValue, oldValue) {
-            console.log("New selection: " + newValue);
+        _selectedStockIdentChanged: function (newValue, oldValue) {
             this.set('model.selectedStockIdent', newValue);
         }
     });

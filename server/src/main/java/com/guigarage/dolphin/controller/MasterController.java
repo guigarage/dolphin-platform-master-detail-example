@@ -32,6 +32,8 @@ public class MasterController {
 
     @PostConstruct
     public void init() {
+        model.setLockCount(0);
+        model.setUnlockCount(0);
         for(StockData stockData : stockManager.getAll()) {
             MasterModelStockItem stockItem = beanManager.create(MasterModelStockItem.class);
             stockItem.stockIdentProperty().set(stockData.getIdent());
@@ -65,6 +67,7 @@ public class MasterController {
                     stockItem.lockedProperty().set(true);
                 }
             }
+            model.setLockCount(model.getLockCount() + 1);
         });
 
         eventBus.subscribe(ServerConstants.STOCK_UNLOCKED_TOPIC, e -> {
@@ -73,6 +76,7 @@ public class MasterController {
                     stockItem.lockedProperty().set(false);
                 }
             }
+            model.setUnlockCount(model.getUnlockCount() + 1);
         });
     }
 

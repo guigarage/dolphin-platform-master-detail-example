@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="bower_components/open-dolphin-js/dist/opendolphin.js"></script>
+    <script src="bower_components/dolphin-polymer/dist/dolphin-polymer.js"></script>
+
+    <script>
+        clientContext = dolphin.connect('http://localhost:8080/dolphin');
+    </script>
+
+    <link rel="import" href="master-view.html">
+    <link rel="import" href="detail-view.html">
+</head>
+<dom-module id="master-detail-view">
+    <template>
+        <master-view selected-stock-ident="{{selectedStockIdent}}"></master-view>
+        <detail-view stock-ident="{{selectedStockIdent}}"></detail-view>
+    </template>
+</dom-module>
+
+<script>
+    Polymer({
+        is: "master-detail-view",
+        properties: {
+            clientContext: Object,
+            selectedStockIdent: String
+        }
+    });
+</script>

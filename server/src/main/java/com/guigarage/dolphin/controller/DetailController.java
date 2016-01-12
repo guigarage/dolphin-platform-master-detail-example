@@ -25,8 +25,8 @@ public class DetailController {
 
     @PostConstruct
     public void init() {
-        model.maxValueProperty().set(100.0);
-        model.minValueProperty().set(0.0);
+       // model.maxValueProperty().set(100.0);
+       // model.minValueProperty().set(0.0);
         model.stockTypesProperty().addAll(StockManager.NORMAL_TYPE, StockManager.SPECIAL_TYPE);
     }
 
@@ -46,7 +46,7 @@ public class DetailController {
     public void save() {
         if(currentData != null) {
             currentData.setName(model.getStockName());
-            currentData.setValue(model.getStockValue());
+            //   currentData.setValue(model.getStockValue());
             currentData.setType(model.getStockType());
            stockManager.save(currentData);
         }
@@ -57,11 +57,11 @@ public class DetailController {
         if(currentData == null) {
             model.stockNameProperty().set(null);
             model.stockTypeProperty().set(null);
-            model.stockValueProperty().set(null);
+            //  model.stockValueProperty().set(null);
         } else {
             model.stockNameProperty().set(currentData.getName());
             model.stockTypeProperty().set(currentData.getType());
-            model.stockValueProperty().set(currentData.getValue());
+            //     model.stockValueProperty().set(currentData.getValue());
         }
     }
 }

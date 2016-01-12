@@ -38,9 +38,9 @@ public class DetailView extends AbstractFXMLViewBinder<DetailModel> {
     @Override
     protected void init() {
         FXBinder.bind(nameField.textProperty()).bidirectionalTo(getModel().stockNameProperty());
-        FXBinder.bind(valueSlider.valueProperty()).bidirectionalToNumeric(getModel().stockValueProperty());
-        FXBinder.bind(valueSlider.minProperty()).bidirectionalToNumeric(getModel().minValueProperty());
-        FXBinder.bind(valueSlider.maxProperty()).bidirectionalToNumeric(getModel().maxValueProperty());
+        //  FXBinder.bind(valueSlider.valueProperty()).bidirectionalToNumeric(getModel().stockValueProperty());
+        // FXBinder.bind(valueSlider.minProperty()).bidirectionalToNumeric(getModel().minValueProperty());
+        // FXBinder.bind(valueSlider.maxProperty()).bidirectionalToNumeric(getModel().maxValueProperty());
         FXBinder.bind(typeChoiceBox.valueProperty()).bidirectionalTo(getModel().stockTypeProperty());
         FXBinder.bind(typeChoiceBox.getItems()).to(getModel().stockTypesProperty());
 

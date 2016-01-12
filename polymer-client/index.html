@@ -37,34 +37,27 @@
     <link rel="import" href="bower_components/iron-icons/iron-icons.html">
     <link rel="import" href="bower_components/paper-icon-button/paper-icon-button.html">
     <link rel="import" href="bower_components/iron-flex-layout/iron-flex-layout.html">
+    <link rel="import" href="master-detail-view.html">
 
-    <script src="bower_components/open-dolphin-js/dist/opendolphin.js"></script>
-    <script src="bower_components/dolphin-polymer/dist/dolphin-polymer.js"></script>
+
     <style>
         body {
             font-family: 'Roboto', 'Noto', sans-serif;
         }
-    </style>
 
-    <style is="custom-style">
         paper-toolbar {
             --paper-toolbar-background: orange;
         }
     </style>
 
-    <script>
-        clientContext = dolphin.connect('http://localhost:8080/dolphin');
-    </script>
-
-    <link rel="import" href="master-view.html">
 
 </head>
 <body class="fullbleed layout vertical">
-    <paper-header-panel class="flex">
-        <paper-toolbar>
-            <span class="title">Stack App</span>
-        </paper-toolbar>
-        <master-view></master-view>
-    </paper-header-panel>
+<paper-header-panel class="flex">
+    <paper-toolbar>
+        <span class="title">Stack App</span>
+    </paper-toolbar>
+    <master-detail-view></master-detail-view>
+</paper-header-panel>
 </body>
 </html>

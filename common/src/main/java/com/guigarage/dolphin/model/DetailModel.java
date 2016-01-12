@@ -9,11 +9,11 @@ public class DetailModel {
 
     private Property<String> stockName;
 
-    private Property<Double> stockValue;
+   // private Property<Double> stockValue;
 
-    private Property<Double> minValue;
+   // private Property<Double> minValue;
 
-    private Property<Double> maxValue;
+   // private Property<Double> maxValue;
 
     private Property<String> stockType;
 
@@ -23,9 +23,9 @@ public class DetailModel {
         return stockName;
     }
 
-    public Property<Double> stockValueProperty() {
-        return stockValue;
-    }
+ //   public Property<Double> stockValueProperty() {
+    //       return stockValue;
+//    }
 
     public Property<String> stockTypeProperty() {
         return stockType;
@@ -35,21 +35,21 @@ public class DetailModel {
         return stockTypes;
     }
 
-    public Property<Double> minValueProperty() {
-        return minValue;
-    }
+    //  public Property<Double> minValueProperty() {
+    //    return minValue;
+    // }
 
-    public Property<Double> maxValueProperty() {
-        return maxValue;
-    }
+    // public Property<Double> maxValueProperty() {
+//        return maxValue;
+    //  }
 
     public String getStockName() {
         return stockName.get();
     }
 
-    public Double getStockValue() {
-        return stockValue.get();
-    }
+//    public Double getStockValue() {
+    //      return stockValue.get();
+    // }
 
     public String getStockType() {
         return stockType.get();
