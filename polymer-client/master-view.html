@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="import" href="bower_components/paper-listbox/paper-listbox.html">
+    <link rel="import" href="bower_components/paper-input/paper-input.html">
+    <link rel="import" href="bower_components/paper-button/paper-button.html">
+    <link rel="import" href="bower_components/paper-checkbox/paper-checkbox.html">
+    <link rel="import" href="bower_components/paper-item/paper-item.html">
+    <link rel="import" href="bower_components/paper-item/paper-item-body.html">
+    <link rel="import" href="bower_components/iron-icons/iron-icons.html">
+    <link rel="import" href="bower_components/iron-icon/iron-icon.html">
+</head>
+<dom-module id="master-view">
+    <template>
+        <div class="layout center-justified">
+            <paper-listbox selected="{{mySelection}}" attr-for-selected="value">
+                <template is='dom-repeat' items='{{model.stockItems}}'>
+                    <paper-item value="{{item.stockIdent}}">
+                        <paper-item-body>{{item.stockName}}</paper-item-body>
+                        <template is="dom-if" if="{{item.locked}}" id="innerTemplate">
+                            <iron-icon icon="lock"></iron-icon>
+                        </template>
+                    </paper-item>
+                </template>
+            </paper-listbox>
+        </div>
+    </template>
+</dom-module>
+
+<script>
+    Polymer({
+        is: "master-view",
+        behaviors: [clientContext.createBehavior('MasterController')],
+        properties: {
+            clientContext: Object,
+            mySelection: {
+                type: String,
+                observer: '_mySelectionChanged'
+            },
+        },
+        _mySelectionChanged: function (newValue, oldValue) {
+            console.log("New selection: " + newValue);
+            this.set('model.selectedStockIdent', newValue);
+        }
+    });
+</script>

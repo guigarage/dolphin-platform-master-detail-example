@@ -2,19 +2,19 @@ package com.guigarage.dolphin.view;
 
 import com.canoo.dolphin.client.ClientContext;
 import com.canoo.dolphin.client.Param;
-import com.canoo.dolphin.client.javafx.AbstractViewBinder;
+import com.canoo.dolphin.client.javafx.AbstractFXMLViewBinder;
 import com.canoo.dolphin.client.javafx.FXBinder;
 import com.guigarage.dolphin.Constants;
 import com.guigarage.dolphin.model.DetailModel;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Slider;
 import javafx.scene.control.TextField;
 
-public class DetailView extends AbstractViewBinder<DetailModel> {
+import java.io.IOException;
+
+public class DetailView extends AbstractFXMLViewBinder<DetailModel> {
 
     @FXML
     private TextField nameField;
@@ -31,18 +31,8 @@ public class DetailView extends AbstractViewBinder<DetailModel> {
     @FXML
     private Button resetButton;
 
-    private Parent baseNode;
-
-    public DetailView(ClientContext clientContext) {
-        super(clientContext, Constants.DETAIL_CONTROLLER_NAME);
-
-        try {
-            FXMLLoader loader = new FXMLLoader(DetailView.class.getResource("detailView.fxml"));
-            loader.setController(this);
-            baseNode = loader.load();
-        } catch (Exception e) {
-            throw new RuntimeException("Can't load FXML for view " + DetailView.class.getSimpleName(), e);
-        }
+    public DetailView(ClientContext clientContext) throws IOException {
+        super(clientContext, Constants.DETAIL_CONTROLLER_NAME, DetailView.class.getResource("detailView.fxml"));
     }
 
     @Override
@@ -63,7 +53,4 @@ public class DetailView extends AbstractViewBinder<DetailModel> {
         invoke(Constants.DETAIL_CONTROLLER_UPDATE_ACTION, param);
     }
 
-    public Parent getBaseNode() {
-        return baseNode;
-    }
 }

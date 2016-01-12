@@ -23,11 +23,11 @@ public class ClientApplication extends DolphinPlatformApplication {
         DetailView detailView = new DetailView(clientContext);
         masterView.selectedStockIdentProperty().addListener((obs, oldVal, newVal) -> detailView.showStock(newVal));
 
-        HBox mainPane = new HBox(masterView.getBaseNode(), detailView.getBaseNode());
+        HBox mainPane = new HBox(masterView.getRootNode(), detailView.getRootNode());
         mainPane.setSpacing(12);
         mainPane.setPadding(new Insets(12));
-        HBox.setHgrow(masterView.getBaseNode(), Priority.NEVER);
-        HBox.setHgrow(detailView.getBaseNode(), Priority.ALWAYS);
+        HBox.setHgrow(masterView.getRootNode(), Priority.NEVER);
+        HBox.setHgrow(detailView.getRootNode(), Priority.ALWAYS);
 
         primaryStage.setScene(new Scene(mainPane));
         primaryStage.show();
